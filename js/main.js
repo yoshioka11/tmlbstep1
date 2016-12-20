@@ -117,9 +117,6 @@ function checks(){
       var x = $("#cb"+i).prop("checked")
       console.log(x);
       if(x){
-        var key = localStorage.key(i);
-        var value = localStorage.getItem(key);
-        localStorage.setItem(key,value);
         $("#list"+i).css('color','red');
         // console.log("aaa")
       }
