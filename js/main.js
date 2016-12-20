@@ -54,11 +54,15 @@ function showText() {
     value = localStorage.getItem(key);
     //表示する前にexcapeTextでエスケープする
     //listとチェックボックスをhtmlに入れる
+    
     html.push($("<li id=\"list" + i + "\">").append(escapeText(value)+'<input type="checkbox" id="' + "cb" + i + '" value="'+i+'" class="checkbo" onclick="checks()">'));
-   
-  }
-  //divの中にhtmlを古い順から追加していく。
+    $("#list6").css('color','red');
+   }
   list.append(html.reverse());
+  
+  
+  //divの中にhtmlを古い順から追加していく。
+  // list.append(html.reverse());
   
   checks();
   // checks();
@@ -115,14 +119,16 @@ function checkText(text) {
 function checks(){
     for(var i=0;localStorage.length>i;i++){
       var x = $("#cb"+i).prop("checked")
-      console.log(x);
       if(x){
-        $("#list"+i).css('color','red');
+      var  key = localStorage.key(i);
+      var  value = localStorage.getItem(key);
+        localStorage.removeItem(key);
+        location.reload()
         // console.log("aaa")
       }
-      if(!x){
-        $("#list"+i).css('color','black');
-        // console.log("aaa")
-      }
+      // if(!x){
+      //   $("#list"+i).css('color','black');
+      //   // console.log("aaa")
+      // }
     }
 }
